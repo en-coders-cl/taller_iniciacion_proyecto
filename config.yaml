@@ -1,0 +1,54 @@
+version: "new"
+periodo: '2023-07-01'
+
+periodo_inicio: '2023-01-01'
+periodo_final: '2023-07-01'
+
+
+#------ CONFIGURACION ------#
+
+
+#------ PARAM MODELO ------#
+
+horas_entrenamiento: 0.1
+split: 0.8
+
+
+#------ RUTAS ARCHIVOS ------#
+
+io_raw: 
+  riesgo_cliente_raw: files/datasets/input/riesgo_cliente.csv
+  merged_cities_raw: files/datasets/input/merged_cities.csv
+  model_data_raw: files/datasets/input/PAKDD2010_Modeling_Data.txt
+  variable_list_raw: files/datasets/input/PAKDD2010_VariablesList_XLS.XLS
+  cities_info_raw: files/datasets/input/BRAZIL_CITIES_REV2022.CSV
+  forest_fire_raw: files/datasets/input/amazon.csv
+  brazil_states_raw: files/datasets/input/brazil_states.csv
+io_primary:
+  cliente_info: files/datasets/intermedia/tablon_primary_{version}
+  fenomeno_cliente: files/datasets/intermedia/fenomeno_cliente_{version}
+  magic_number: files/datasets/intermedia/magic_number_{version}.feather
+  magic_number_r: files/datasets/intermedia/magic_number_r_{version}.RDS
+  cities_info: files/datasets/intermedia/cities_info_{version}.feather
+  forest_fire: files/datasets/intermedia/forest_fire_{version}.feather
+  brazil_states: files/datasets/intermedia/brazil_states_{version}.feather
+io_master:
+  tablon_atributos: files/datasets/output/tablon_atributos_{version}
+  tablon_master: files/datasets/output/tablon_master_{version}.feather
+  tablon_master_train: files/datasets/output/tablon_master_train_{version}.RDS
+  tablon_master_test: files/datasets/output/tablon_master_test_{version}.RDS
+  fited_model: files/models/fited_model_{version}.RDS
+
+
+#--------- Configuracion workshop
+
+## Solo para preparar el workshop, no tiene que ver con el psudoproyecto
+
+config:
+  i_datos: files/datasets/input/PAKDD2010_Modeling_Data.txt
+  i_Var:  files/datasets/input/PAKDD2010_VariablesList_XLS.XLS
+  i_riesgo_raw: files/datasets/input/riesgo_cliente.csv
+
+#------ WORKSHOP ------#
+
+tabla_de_test: "cdr_bt_kpi_trafico_celdas_semanal"
