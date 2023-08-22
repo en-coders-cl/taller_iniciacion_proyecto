@@ -21,7 +21,7 @@ io_raw:
   merged_cities_raw: files/datasets/input/merged_cities.csv
   model_data_raw: files/datasets/input/PAKDD2010_Modeling_Data.txt
   variable_list_raw: files/datasets/input/PAKDD2010_VariablesList_XLS.XLS
-  cities_info_raw: files/datasets/input/BRAZIL_CITIES_REV2022.CSV
+  cities_info_raw: files/datasets/input/BRAZIL_CITIES_REV2022.csv
   forest_fire_raw: files/datasets/input/amazon.csv
   brazil_states_raw: files/datasets/input/brazil_states.csv
 io_primary:
