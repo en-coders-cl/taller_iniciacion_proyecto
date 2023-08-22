@@ -15,24 +15,54 @@ Al final, los participantes contarán con una comprensión sólida sobre cómo d
 ## Aprendizaje a desarrollar
 
 1. **Metodologia**: Documentar correctamente el proyecto.
-2. **Infraestructura**: Almacenamiento en base de datos relacional y columnar.
+    * README.md
+    * Bitacora
+2. **Infraestructura**: Almacenamiento en base de datos.
+    * relacional:Sqlite
+    * columnar: duckdb
+    * object oriented storage: S3, Mimo
+    * file system. 
 3. **Infraestructura**: Entender el poder de computo del computador a ocupar
+    * CPU
+    * GPU
+    * RAM
 4. **Infraestructura**: Control de versiones de código.
+    * Git
+    * Github
 5. **Metodologia**: Interfaz de interracion.
+    * RStudio
+    * Visual Studio Code
+    * Terminal
 6. **Herramientas**: Herramienta de apoyo de desarrollo de código.
+    * Virtualenv, renv, conda   
 7. **Herramientas**: Herramienta de apoyo de ejecucion de código.
-8. **Herramientas**: Herramienta de apoyo de disponibilizar de código.   
+    * Snakemake
+    * Bash
+8. **Herramientas**: Herramienta de apoyo de disponibilizar de código.
+    * Docker
+    * API   
 9. **Metodologia**: Servicios de apoyo de desarrollo de código.
+    * Github
+    * ChatGPT
+    * Stackoverflow
+    * Copilot
+    * Pizara
 10. **Metodologia**: Tipo de estructura de ejecucion.
+    * Flujo de Datos
+    * Flujo de tareas
 11. **Metodologia**: Tipo de paradigma de programación.
+    * Funcional 
+    * Orientado a objetos
+    * Declarativo
+    * Imperativo
 12. **Metodologia**: Estructura de carpeta.
 11. **Metodologia**: Estructura de codigo.
 
 ## Recursos Relevantes
 
-* [Repaso de la Metodologia de Desarrollo](http://google.com)
-* [Bitacora del Proyecto](http://google.com)
-* [Presentacion](http://google.com)
+* [Repaso de la Metodologia de Desarrollo](https://www.canva.com/design/DAFo5Xc27uQ/5LfD5LpkH7PHxI94PyOM6Q/edit?utm_content=DAFo5Xc27uQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+* [Bitacora del Proyecto](https://www.canva.com/design/DAFsTJKVQUY/ytdDubyKQPADVpdjpT6O8g/edit?utm_content=DAFsTJKVQUY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+* [Presentacion](https://www.canva.com/design/DAFo5Xc27uQ/5LfD5LpkH7PHxI94PyOM6Q/edit?utm_content=DAFo5Xc27uQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 * [Papers](http://google.com)
 
 ## Conocimientos previos.
@@ -55,10 +85,10 @@ Herramientas necesarias para ejecutar el proyecto:
 
 ## Contenido
 
-* [Configuración Inicial](#configuración-inicial)
+* [Configuración Inicial Basica](#configuración-inicial)
 
 
-# Configuración Inicial
+# Configuración Inicial Basica
 
 En esta sección se detalla la configuración inicial de la infraestructura para poder ejecutar el proyecto. Sigue los pasos en orden y al detalle.
 
@@ -71,39 +101,16 @@ Cuando aparece un comoando entre <>, significa que hay que reemplazarlo por el v
 ## Clonar el proyecto
 ```
 cd ~/Documents/
-git clone <encoders>workshop_back2basic.git
+git clone https://github.com/en-coders-cl/taller_iniciacion_proyecto.git
 ```
 
-## Revisar si existe carpeta "file"
+## Crear carpeta "file"
 
-* Con "file" nos referimos a la carpeta que tiene archivos o objetos del proyectos que estan en AWS S3.
-
-* Una vez hecho el symlink, solo se tiene que hacer una vez
-
-* Validar si la carpeta existe en el bucket.
-
+* Crear carpeta "file" en la raiz del proyecto
 ```
-ls -l /mnt/<bucket>/workshop_back2basic/
+cd ~/Documents/taller_iniciacion_proyecto
+mkdir files
 ```
-
-* Si no existe, crearla en el bucket
-```
-mkdir /mnt/<bucket>/workshop_back2basic/
-```
-
-* La carpeta "files" NO tiene que estar creada <- sola cuando recien clono el proyecto
-* en la carpta del proyecto ejecuto
-```
-cd ~/Documents/workshop_back2basic/
-ln -s /mnt/<bucket>/workshop_back2basic/ files
-```
-
-* Validar el contenido
-```
-ls -l files 
-```
-* Debe aparece que la carpeta "files" es un link simbolico, al mostrar que tiene una flecha "->" y el destino del link
-
 
 ![Archivos con variables secretas](_config_workshop/config_env.png)
 
@@ -116,16 +123,14 @@ Instalar librerias necesarias para ejecución de proyecto:
 
 * Abrir el proyecto desde RStudio o ingresando a la carpeta del proyecto desde la consola  y iniciar la consolta de R:
 * La primerae vez que se ingresa va a instalar la version renv correspondiente al proyecto
-* Si existe un problema al instalar un paquete consultar a la comunidad a traves del canal de "Resolucion de Problemas"
+
 
 ```r
-renv::restore(exclude = c('pipe','arrow'), prompt = F)
+renv::restore(exclude = c('enpiper','Matrix'), prompt = F)
 ```
 
 * Instalar arrow
 ```r	
-Sys.setenv(ARROW_USE_PKG_CONFIG = "false")
-install.packages("arrow") # Cuando finaliza de installar pregunta que hacer, elegir la opcion 1 que dice: Snapshot, just using the currently installed packages.
 arrow::install_arrow() 
 ```
 
@@ -136,13 +141,10 @@ arrow::install_arrow()
 renv::install("devtools")
 ```
 
-A continuación, instalar el toolkit utilizando la siguiente función en la misma consola de R:
+A continuación, instalar el enpiper utilizando la siguiente función en la misma consola de R:
 
 ```r
-devtools::install_bitbucket("<>/pipe",
-                            auth_user = Sys.getenv("bitbucket_app_user"),
-                            password = Sys.getenv("bitbucket_app_pass"),
-                            ref = "master") #choose not to update dependencies
+devtools::install_github("en-coders-cl/enpiper")
 ```
 
 ## Ocupar virtualenv para instalar librerias de Python
@@ -157,7 +159,7 @@ sudo apt-get install python3-venv
 * Abrir el proyecto desde Visual Studio Code o en una terminal:
 
 ```bash
-cd ~/Documents/encoders_back2basic
+cd ~/Documents/taller_iniciacion_proyecto
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
@@ -165,7 +167,7 @@ pip install -r requirements.txt
 ## Instalar paquete de python interno epipe
 
 ```bash
-pip install git+<encoders>epipe.git
+pip install git+https://github.com/en-coders-cl/enpipe.git
 ```
 
 
@@ -173,11 +175,7 @@ pip install git+<encoders>epipe.git
 
 ## Contexto
 
-El repositorio tiene un psudo proyecto de ejemplo para entender como aplicar las metodlogias definidas por la comunidad
-
 El psudo problema a resolver se trata de un problema de clasificación riesgo de fuga de clientes.
-
-
 
 
 ## Estructura de Carpetas
@@ -204,9 +202,7 @@ El proyecto esta compuesto por las siguientes carpetas:
 * requirements.txt: Contiene las librerias de python necesarias para ejecutar el proyecto
 * renv.lock: Contiene las librerias de R necesarias para ejecutar el proyecto
 * config.yml: Contiene la configuración de snakemake
-
-
-
+ 
 
 # Flujo de Ejecución
 
@@ -224,7 +220,7 @@ Poner el DAG de Inferencia
 
 * Ejecutar el script de tablon maestro. Genera el tablon maestro para entrenar el modelo y hacer analisis exploratorio de los datos.
 ```
-Rscript pipeline/master_table.R
+Rscript pipeline/p1_tablon_master.R
 ```
 
 * Ejecutar el script de modelamiento. Genera el modelo y los reportes de performance.
@@ -252,7 +248,6 @@ snakemake --help
 
 ## Instalacion de Conda
 
-* Valdiar si tiendes conda instalado (el datalab v2.2 ya viene conda instalado)
 ```
 conda --version
 ```
@@ -293,7 +288,7 @@ nano .env
 ```
 
 ```
-version=<chris>
+version=<prueba>
 ```
 
 
@@ -305,12 +300,12 @@ conda activate snakemake
 
 * Ejectuar el pipeline tablon maestro. Genera el tablon maestro para entrenar el modelo y hacer analisis exploratorio de los datos.
 ```
-snakemake --cores 1 --use-conda
+snakemake -c1 -s pipeline/pipe1_tablon_master.smk prep_tablon_maestro
 ```
 
 * Ejecutar el pipeline de modelamiento. Genera el modelo y los reportes de performance.
 ```
-snakemake --cores 1 --use-conda -s pipeline/model.snakefile
+snakemake --cores 1  -s pipeline/model.smk
 ```
 
 * Ejecutar el pipeline tablon de inferencia. Crear el tablon de inferencia y genera el el resultado de inferencia.
