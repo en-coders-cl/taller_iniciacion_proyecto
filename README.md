@@ -60,16 +60,15 @@ Al final, los participantes contarán con una comprensión sólida sobre cómo d
 
 ## Recursos Relevantes
 
-* [Repaso de la Metodologia de Desarrollo](https://www.canva.com/design/DAFo5Xc27uQ/5LfD5LpkH7PHxI94PyOM6Q/edit?utm_content=DAFo5Xc27uQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
-* [Bitacora del Proyecto](https://www.canva.com/design/DAFsTJKVQUY/ytdDubyKQPADVpdjpT6O8g/edit?utm_content=DAFsTJKVQUY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
-* [Presentacion](https://www.canva.com/design/DAFo5Xc27uQ/5LfD5LpkH7PHxI94PyOM6Q/edit?utm_content=DAFo5Xc27uQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+* [Repaso de la Metodologia de Desarrollo](https://drive.google.com/file/d/1SASo-YjD9FubS5TJ2xrWcgB9a16mB9i-/view?usp=drive_link)
+* [Bitacora del Proyecto](https://drive.google.com/file/d/1evy3kc59c6NrRq6zrqlPPCW1N7-pHLp6/view?usp=sharing)
+* [Presentacion](https://drive.google.com/file/d/1SASo-YjD9FubS5TJ2xrWcgB9a16mB9i-/view?usp=drive_link)
 * [Papers](http://google.com)
 
 ## Conocimientos previos.
 * Conocimientos basicos de R
 * Conocimientos basicos de Python
 * Conocimientos basicos de SQL
-* Conocimientos basicos de AWS
 * Conocimientos basicos de Git
 * Conocimientos basico de Linux y Bash
 * Conocimientos basicos en Nano o Vim
