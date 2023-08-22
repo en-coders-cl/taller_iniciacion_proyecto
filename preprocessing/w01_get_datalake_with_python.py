@@ -22,24 +22,12 @@ args, _ = parser.parse_known_args()
 
 #----- CONSULTA -------------------------
 
-QUERY = (
-    f"select semana_anio,  count(semana_anio) as count from {config['tabla_de_test']} group by semana_anio limit 10"
-)
 
-wr.s3.delete_objects(f"{config['s3_staging_dir'] + config['s3_output_directory']}")  # dropfiles from folder
-
-df = wr.athena.read_sql_query(
-    sql=QUERY,
-    database=config['schema_name'],
-    s3_output=config['s3_staging_dir'] + config['s3_output_directory'],
-    ctas_approach=False,
-    unload_approach=True
-)
 
 
 #----- TRANSFORMACION -------------------------
 
-magic_number = df['count'].sum()
+magic_number = 10
 
 #converto a dataframe
 magic_number = pd.DataFrame([[magic_number]], columns=['magic_number'])
